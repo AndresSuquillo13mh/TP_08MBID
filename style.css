@@ -1,14 +1,16 @@
-h1, h2 {
-  font-family: Lato;
-}
-
-p {
+p, h1, h2, li {
   font-family: Arial;
 }
 
-
 #viz1,#viz2,#viz3{
-  width: 80%;
+  width: 800px;
   height: 300px;
+  position: relative;
+  margin: 0 auto;
+  padding: 10px;
   }
+
+.clase{
+  align-items: center;
+}
 
