@@ -21,5 +21,9 @@ var visualization = d3plus.viz()
   .type("bar")
   .id("Status")
   .x("Status")
-  .y("count") 
+  .y("count")
+  .timeline({
+    "align":"center",
+    "value":true
+  })
   .draw()
