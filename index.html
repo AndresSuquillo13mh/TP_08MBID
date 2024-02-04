@@ -1,0 +1,180 @@
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3plus/1.9.2/d3plus.full.min.js"></script>
+</head>
+
+<div id="app"></div>
+
+<h1> <p>Usando datos para describir la Calidad del Aire en 2023 </h1>
+<h2> <p>08MBID - Máster en Big Data VIU </h2>
+
+<p><b>Autor:</b> Daniel Merizalde restrepo
+  <br />
+
+  <b><p>Fecha:</b>
+      30-01-2024
+  <br />
+
+  <b><p>Enlace Stackblitz:</b> 
+  <a href="https://js-g6qjcz.stackblitz.io" target="_blank">
+    https://js-g6qjcz.stackblitz.io
+  </a>
+  <br />
+
+  <b><p>Enlace Colab:</b> 
+    <a href="https://colab.research.google.com/drive/1CzscnZBP3di0GUXMDiAERwlMDiXdZbYp?usp=sharing" target="_blank">
+      https://colab.research.google.com/drive/1CzscnZBP3di0GUXMDiAERwlMDiXdZbYp?usp=sharing
+    </a>
+    <br />
+
+  <h2> <p>Introducción: </h2>
+
+    <p>El índice de calidad del aire (AQI) se utiliza para informar diariamente sobre la calidad del aire. Le indica qué tan limpio o contaminado está su aire y qué efectos de salud asociados podrían ser motivo de preocupación para usted. 
+    
+    <p>El AQI se centra en los efectos sobre la salud que puede experimentar unas pocas horas o días después de respirar aire contaminado. Piense en el AQI como un criterio que va de 0 a 500. Cuanto mayor sea el valor del AQI, mayor será el nivel de contaminación del aire y mayor será el problema de salud. 
+      
+    <p>Por ejemplo, un valor de AQI de 50 o menos representa una buena calidad del aire, mientras que un valor de AQI superior a 300 representa una calidad de aire peligrosa. Por el contaminante. Los valores de AQI iguales o inferiores a 100 generalmente se consideran satisfactorios. Cuando los valores de AQI están por encima de 100, la calidad del aire se considera insalubre, al principio para los miembros de las poblaciones con mayor riesgo de sufrir un efecto en la salud, luego para toda la población a medida que los valores de AQI aumentan (más de 150).
+
+    
+<br />
+<br />
+
+<iframe title="Tablero central de control de contaminación" aria-label="Table" id="datawrapper-chart-Izyg9" src="https://datawrapper.dwcdn.net/Izyg9/1/" scrolling="no" frameborder="0" style="border: none;" width="600" height="341" data-external="1"></iframe>
+
+  <h2><p> Audiencia: </h2>
+
+    <p>El presente trabajo tiene por objetivo informar sobre la calidad del Aire tomando como  
+<a href="https://www.kaggle.com/datasets/azminetoushikwasi/aqi-air-quality-index-scheduled-daily-update/data?select=data_date.csv" target="_blank">
+  información
+</a> 
+en un proyecto Kaggle. Por lo tanto, la audiencia a todas las personas que cuiden su salud y que les interese realizar deporte al aire libre y cómo la analítica de datos puede generar nuevas perspectivas sobre la importancia de la calidad del aire.
+
+  <h2> <p>Objetivo: </h2>
+
+    <p>Generar visualizaciones de datos ilustrando la calidad del aire alrededor del mundo. Informar sobre los niveles de limpieza y contaminación mediante estadística descriptiva.
+
+  <h2> <p>Situcación actual del aire en el Mundo </h2>
+    <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*-ctnuLQ0A-oS6Za4hIgaVg.png" width="700" height="300">
+  <p><b>Estado general por países:</b>  Se tiene una descripción general de los datos mediante el recuento de estados: cuál es el mayor y cuál el peor.
+  
+  <div id="viz1"></div>
+
+  Como se puede observar, la mayoría de los países se encuentran en estado bueno o moderado y pocos países son insalubres. Esto es una buena señal.
+
+  <p> Mediante un gráfico de mapa se muestra la calidad del aire en los distintos países.
+
+  
+
+
+
+<br />
+  <img src="https://raw.githubusercontent.com/Daniel-Merizalde/08MBID_trabajo_practico/main/eficiencia_vs_vol.png" alt="Graph">
+
+  <p>Gracias a este <b> gráfico de dispersión multivariable </b> se puede hacer una comparación de los candidatos en los tres aspectos mencionados anteriormente, no solo entre ellos sino con el resto de jugadores de la liga, gracias al <b> énfasis de color </b> que los diferencia. 
+
+<br />
+<br />
+Se puede observar que Embiid y Giannis anotan con un gran volumen en comparación con el resto de la liga, siendo número 1 y 2 respectivamente en puntos por 100 posesiones y usando un gran porcentaje de las posesiones de sus equipos, ilustrado por el tamaño de los puntos que los representa. El perfil anotador de Jokić es muy distinto, ya que su volumen y porcentaje de uso son menores, pero su eficiencia es la mejor entre todos los jugadores que anotan más de 30 puntos por 100 posesiones. Para esta categoría la combinación de eficiencia por encima del promedio, con el primer lugar de toda la liga en volumen le da a Embiid la ventaja.
+
+
+  <h3> <p> Creación: </h3>
+
+  <p>Creación es la hábilidad de asistir y generar tiros para tus compañeros de equipo. Para poder comparar las hábilidades de creación de los tres candidatos se analizan sus asistencias por cada 100 posesiones y sus porcentajes de asistencia, pérdidas y uso. La mejor forma de generar valor para un equipo en términos de creación es tener un alto volumen y porcentaje de asistencias, mientras se mantiene el porcentaje de pérdidas en el menor número posible.
+<br />
+<br />
+
+  <iframe title="Comparación en métricas de creación" aria-label="Split Bars" id="datawrapper-chart-dU8g3" src="https://datawrapper.dwcdn.net/dU8g3/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="171" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+  </script>
+
+<p>Gracias a este <b>gráfico de barras divididas</b> se puede comparar el desempeño de los candidatos en las métricas relacionadas con creación durante la temporada. Se observa que el volumen y porcentaje de asistencias de Jokić se encuentran muy por encima de los otros candidatos, así como su porcentaje de pérdidas; esta variable se busca mantener en valores bajos, pero en el caso de Jokić, que cuenta con el segundo porcentaje de asistencias más alto de la liga (46.6) indica que estas pérdidas se pueden generar por el alto volumen de pases intentados y por el hecho de intentar pases de "alto riesgo alta recompensa". Esto, junto con el hecho de brindar tanto volumen de asistencias mientras tiene el menor porcentaje de uso de los 3 candidatos por un buen margen señala la gran hábilidad de creación de Jokić para su equipo.
+<br />
+<br />
+
+  <img src="https://raw.githubusercontent.com/Daniel-Merizalde/08MBID_trabajo_practico/main/obpm.png" alt="Graph">
+
+  <p>Otra forma de corroborar las conclusiones obtenidas con el gráfico de barras divididas es utilizar un <b>gráfico de enjambre</b> que muestra la distribución de puntajes de Box Plus/Minus ofensivo de todos los jugadores de la liga. Esta es una variable híbrida que busca cuantificar los aportes ofensivos de cada jugador durante la temporada, incluyendo métricas de anotación y creación.
+    <br />
+    <br />
+    <p>Anteriormente observamos que Jokić no es necesariamente el anotador más fuerte de los 3 candidatos, pero cuenta con el mejor BPM ofensivo. Indicando que la combinación de su gran eficiencia anotadora con habilidades de creación élite lo convierten el el mejor jugador ofensivo de la liga. También se puede observar que Embiid y Giannis se encuentran entre los mejores puestos de la liga en OBPM.
+
+  <h3> <p>Defensa: </h3>
+
+  <p>Cuantificar el impacto defensivo de un jugador suele ser complejo, ya que muchas veces una buena defensa hace que "no pasen" cosas, y el hecho de que una acción no ocurra es difícil de cuantificar. Sin embargo, se busca hacer una aproximación utilizando varias estadísticas disponibles que se correlacionan con el desempeño defensivo de los equipos.
+    <br />
+    <br />
+
+  <img src="https://raw.githubusercontent.com/Daniel-Merizalde/08MBID_trabajo_practico/main/blok_vs_reb.png" alt="Graph">
+
+  <p>En este <b> gráfico de dispersión multivariable </b> se pueden evidenciar el rendimiento de los candidatos en porcentaje de bloqueos, en donde Embiid lidera claramente y porcentaje de rebotes defensivos, donde Jokić y Giannis se encuentran muy parejos. También se trata de visualizar la varible de Win Shares Defensivos (DWS) que estima el impacto defensivo de cada jugador según el desempeño del su cuando el está en cancha, sin embargo, los valores parecen ser tan cercanos que no se evidencian diferencias de tamaño en los 3 candidatos.
+  <br />
+  <br />
+
+  <iframe title="Comparación en métricas defensivas" aria-label="Split Bars" id="datawrapper-chart-kOp7E" src="https://datawrapper.dwcdn.net/kOp7E/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="157" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+  </script>
+
+<p>Para complementar el análisis defensivo, se genera un <b> gráfico de barras divididas </b>, en donde se evidencia que el rating defensivo de sus equipos cuando el jugador está en cancha, así como el porcentaje en tiros defendidos presentan a Giannis cómo el mejor defensor (Para estas variables un valor menor es mejor ya que se está estimando la eficiencia ofensiva del oponente) y se corrobora que los valores de Win Shares Defensivos son prácticamente iguales. Teniendo en cuenta que la defensa es más difícil de cuantificar a nivel individual y Giannis fue una pieza clave de la cuarta mejor defensa de la liga durante la temporada, se le da la ventaja sobre Embiid por un ligero márgen a pesar del gran porcentaje de bloqueos de Embiid.
+  <br />
+  <br />
+
+  <h3> <p> Espaciado: </h3>
+
+    <p>El espaciado habla de la habilidad de un jugador para generar espacios de ataque para sus compañeros gracias a su capacidad de anotar en tiros a distancia, ya que si un jugador es buen anotador cuando está lejos de la canasta, los defensas no pueden dejarlo libre cuando no tiene posesión del balón.
+      <br />
+      <br />
+
+  <img src="https://raw.githubusercontent.com/Daniel-Merizalde/08MBID_trabajo_practico/main/joker_shotchart.png" alt="Graph">
+  <img src="https://raw.githubusercontent.com/Daniel-Merizalde/08MBID_trabajo_practico/main/giannis_shotchart.png" alt="Graph">
+  <img src="https://raw.githubusercontent.com/Daniel-Merizalde/08MBID_trabajo_practico/main/embiid_shotchart.png" alt="Graph">
+
+  <p>Gracias a los <b> mapas de ubicación de tiro </b>, se pueden observar las ubicaciones de todos tiros que cada candidato anotó durante la temporada, en donde los valores más cálidos (cercanos al amarillo) indican la frecuencia de estos tiros. Todos los candidatos son jugadores interiores que se enfocan en anotar cerca del aro, especialmente Giannis, que no muestra casi intentos desde la media distancia o detrás de la linea de 3 puntos. El mapa de Joel Embiid presenta la mayor versatilidad, con una buena cantidad de intentos distribuídos en todas las zonas de la cancha (cerca del aro, media distancia y de 3 puntos).
+    <br />
+    <br />
+
+  <iframe title="Comparación en métricas de creación" aria-label="Split Bars" id="datawrapper-chart-x6xnA" src="https://datawrapper.dwcdn.net/x6xnA/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="157" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+  </script>
+
+<p>La versatilidad de tiro de Embiid se corrobora usando un <b> gráfico de barras divididas </b> que compara el número de intentos por cada 100 posesiones desde 2 y 3 puntos, así como los porcentajes anotados en cada una de las zonas. Este gráfico indica que probablemente Jokić es el mejor tirador de los 3; evidenciado por su excelente porcentaje de tiro desde ambas zonas (especialmente la de 2 puntos). Sin embargo, gracias a su vérsatilidad de ubicaciones y mayor volumen sin sacrificar muchos puntos de eficiencia, Embiid se queda con la primera posición en términos de espaciado.
+  <br />
+  <br />
+
+  <h3> <p> Rendimiento colectivo: </h3>
+
+    <p>Se compara el rendimiento colectivo de los candidatos usando un <b> gráfico de barras apiladas </b> que ilustra los porcentajes de victorias durante la temporada. Para este caso Giannis es el jugador con mejor rendimiento (su equipo tuvo el mejor record de toda la liga), pero todos los candidatos jugaron en equipos que tuvieron un gran éxito en términos de victorias durante la temporada regular.
+      <br />
+      <br />
+
+  <iframe title="Comparación de rendimiento colectivo (WIN%)" aria-label="Bar Chart" id="datawrapper-chart-K0Z7Q" src="https://datawrapper.dwcdn.net/K0Z7Q/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="173" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+  </script>
+
+  <h2> <p> Conclusión: </h2>
+
+  <img src="https://raw.githubusercontent.com/Daniel-Merizalde/08MBID_trabajo_practico/main/radar.png" alt="Graph">
+
+  <p>Teniendo en cuenta los resultados de cada categoría evaluada, se hace un <b> gráfico de radar </b> que evidencia las fortalezas y débilidades de cada candidato sobre los otros, así como lo pareja que fue la carrera por el MVP de la temporada 2022-23. Cada persona puede tener opiniones que difieren y dar más peso a una de las categorías sobre las otras, pero tomando el valor de cada categoría por igual, el jugador más valioso de la NBA para la temporada es <b> JOEL EMBIID. </b>
+    <br />
+    <br />
+
+    <h2> <p> Aprendizajes y comentarios: </h2>
+    
+      <p>Antes de comenzar la actividad, mi candidato elegido era Nikola Jokić, por lo que es interesante ir analizando los resultados y ver como los datos recolectados pueden no estar de acuerdo con mis creencias previas (Let de DataSet change your mindset).
+        <br />
+      <p>Al utilizar una variedad de herramientas diferentes, puede ser complejo mantener una cohesión en cuanto a los tipos de gráficos y su estilo, por esto se usa una paleta de colores verde, azul y amarillo para poder mantener una identidad gráfica durante todo el documento.
+        <br />
+      <p>A pesar de que el público objetivo del trabajo probablemente ya tiene conocimiento sobre los temas que trata cada variable, al ser específicas de un deporte se cambió el tipo de redacción para poder explicarlas y que idealmente cualquier persona pudiera entender los gráficos y los resultados obtenidos.
+        <br />
+        <br />
+        Muchas gracias.
+
+    <h2> <p> Herramientas empleadas: </h2>
+      <span class="negrita"><p>Seaborn:</span> Dispersión - Enjambre.
+      <span class="negrita"><p>Matplotlib:</span> Mapa - Radar.
+      <span class="negrita"><p>Data Wrapper:</span> Barras divididas - Barras apiladas.
+      <br />
+
+    <h2> <p> Fuentes consultadas: </h2>
+      <span class="negrita"><p>Basketball Reference:</span> https://www.basketball-reference.com/leagues/NBA_2023_shooting.html
+      <span class="negrita"><p>Sitio oficial NBA:</span> https://www.nba.com/stats/teams/traditional
+      <span class="negrita"><p>Medium:</span> https://towardsdatascience.com/make-a-simple-nba-shot-chart-with-python-e5d70db45d0d
+      <br />
+  

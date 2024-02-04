@@ -1,0 +1,14 @@
+h1, h2 {
+  font-family: Lato;
+}
+
+p {
+  font-family: Arial;
+}
+
+
+#viz1,#viz2,#viz3{
+  width: 80%;
+  height: 300px;
+  }
+
